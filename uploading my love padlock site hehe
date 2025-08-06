@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unlock My Heart 💖</title>
+  <style>
+    body {
+      background-color: #ffeaf4;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      color: #d63384;
+    }
+    .pin-boxes {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .pin-box {
+      width: 50px;
+      height: 60px;
+      border: 2px solid #d63384;
+      border-radius: 10px;
+      background-color: #fff;
+      font-size: 28px;
+      text-align: center;
+      line-height: 60px;
+      color: #d63384;
+    }
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      gap: 15px;
+    }
+    .btn {
+      width: 60px;
+      height: 60px;
+      background-color: #ffb6d9;
+      border: none;
+      border-radius: 10px;
+      font-size: 22px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #d63384;
+    }
+    .message {
+      margin-top: 20px;
+      font-size: 22px;
+      color: #d63384;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Enter the PIN 💘</h1>
+
+  <div class="pin-boxes">
+    <div class="pin-box" id="box1"></div>
+    <div class="pin-box" id="box2"></div>
+    <div class="pin-box" id="box3"></div>
+    <div class="pin-box" id="box4"></div>
+  </div>
+
+  <div class="keypad">
+    <button class="btn" onclick="press('1')">1</button>
+    <button class="btn" onclick="press('2')">2</button>
+    <button class="btn" onclick="press('3')">3</button>
+    <button class="btn" onclick="press('4')">4</button>
+    <button class="btn" onclick="press('5')">5</button>
+    <button class="btn" onclick="press('6')">6</button>
+    <button class="btn" onclick="press('7')">7</button>
+    <button class="btn" onclick="press('8')">8</button>
+    <button class="btn" onclick="press('9')">9</button>
+    <button class="btn" onclick="clearPin()">⟲</button>
+    <button class="btn" onclick="press('0')">0</button>
+    <button class="btn" onclick="checkPin()">✔</button>
+  </div>
+
+  <div class="message" id="message"></div>
+
+  <script>
+    let pin = '';
+    function press(num) {
+      if (pin.length < 4) {
+        pin += num;
+        document.getElementById('box' + pin.length).innerText = num;
+      }
+    }
+
+    function clearPin() {
+      pin = '';
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById('box' + i).innerText = '';
+      }
+      document.getElementById('message').innerText = '';
+    }
+
+    function checkPin() {
+      if (pin === '1411') {
+        document.getElementById('message').innerText = 'Date? 💖';
+      } else {
+        document.getElementById('message').innerText = 'Oops! Wrong PIN 😢';
+      }
+    }
+  </script>
+
+</body>
+</html>
